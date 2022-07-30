@@ -2,34 +2,37 @@ import React, {useState} from 'react';
 import s from "./Button.module.css";
 import {Button} from "./Button";
 
-/*type CounterType={
-    addButtonSet:()=>void
-    maxValue:number
-}*/
+type CounterType = {
+    maxValue: number
+    startValue: number
+    setStartValue: (startValue: number) => void
+}
 
-export const Counter = () => {
+export const Counter = (props: CounterType) => {
 
-    let [a, setA] = useState(0)
+    let [counter, setCounter] = useState(0)
 
     const addButtonInc = () => {
-        if (a < 5)
-        {setA(++a)}
+        if (counter < props.maxValue) {
+            setCounter(++counter)
+        }
 
     }
+
     const addButtonReset = () => {
-        setA(0)
+        setCounter(0)
     }
 
-    const InputClasses = a === 5 ? s.performance : s.stopPerformance
-    const Button1Classes= a<5 ? s.active:''
-    const Button2Classes= a>0 ?s.active:''
+    const InputClasses = counter === props.maxValue ? s.performance : s.stopPerformance
+    const Button1Classes = counter < props.maxValue ? s.active : ''
+    const Button2Classes = counter >= props.maxValue ? s.active : ''
 
     return (
         <div className={s.rectangle}>
 
-            <div><h1 className={InputClasses}>{a}</h1></div>
+            <div><h1 className={InputClasses}>{counter}</h1></div>
             <div className={s.total}>
-                <Button className={Button1Classes} name={'inc'}  onClick={addButtonInc}/>
+                <Button className={Button1Classes} name={'inc'} onClick={addButtonInc}/>
                 <Button className={Button2Classes} name={'reset'} onClick={addButtonReset}/>
             </div>
 
