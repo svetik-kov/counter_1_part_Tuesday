@@ -9,7 +9,7 @@ function App() {
 
     return (
         <div className={s.block}>
-            <Counter/>
+            <Counter />
             <CounterSetting/>
         </div>
 

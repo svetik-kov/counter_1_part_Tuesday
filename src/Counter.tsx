@@ -2,6 +2,11 @@ import React, {useState} from 'react';
 import s from "./Button.module.css";
 import {Button} from "./Button";
 
+/*type CounterType={
+    addButtonSet:()=>void
+    maxValue:number
+}*/
+
 export const Counter = () => {
 
     let [a, setA] = useState(0)
@@ -21,11 +26,13 @@ export const Counter = () => {
 
     return (
         <div className={s.rectangle}>
+
             <div><h1 className={InputClasses}>{a}</h1></div>
             <div className={s.total}>
                 <Button className={Button1Classes} name={'inc'}  onClick={addButtonInc}/>
                 <Button className={Button2Classes} name={'reset'} onClick={addButtonReset}/>
             </div>
+
         </div>
     );
 };
