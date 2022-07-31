@@ -3,10 +3,11 @@ import {Button} from "./Button";
 import s from './Button.module.css'
 
 type CounterSettingType = {
-    maxValue: string
-    setMaxValue: (maxValue: string) => void
-    startValue: string
-    setStartValue: (startValue: string) => void
+    maxValue: number
+    setMaxValue: (maxValue: number) => void
+    startValue: number
+    setStartValue: (startValue: number) => void
+
 }
 
 export const CounterSetting = (props: CounterSettingType) => {
@@ -47,13 +48,13 @@ export const CounterSetting = (props: CounterSettingType) => {
       }*/
 
     const onchangeMaxHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMaxValue(e.currentTarget.value)
+        props.setMaxValue(Number(e.currentTarget.value))
     }
     const onchangeStartHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setStartValue(e.currentTarget.value)
+        props.setStartValue(Number(e.currentTarget.value))
     }
     const setHandler = () => {
-       /* props.setStartValue(props.maxValue)*/
+        props.setStartValue(props.startValue)
     }
 
 

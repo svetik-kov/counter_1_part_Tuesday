@@ -7,12 +7,12 @@ import s from './Button.module.css'
 
 
 function App() {
-
-    let [maxValue,setMaxValue]=useState(() => {
+    let [counter, setCounter] = useState(0)
+    let [maxValue,setMaxValue]=useState<number>(() => {
         let maxValueString = localStorage.getItem('maxValue')
         if (maxValueString) {
             let newValueMax = JSON.parse(maxValueString)
-            return newValueMax
+            return Number(newValueMax)
         } else {
             return 0
         }
@@ -42,18 +42,24 @@ function App() {
     const startLocalStorageHandler = () => {
         localStorage.setItem('startValue', JSON.stringify(startValue))
     }
+
+
     return (
         <div className={s.block}>
             <Counter
+                counter={counter}
+                setCounter={setCounter}
                 maxValue={maxValue}
                 startValue={startValue}
                 setStartValue={setStartValue}
+
             />
             <CounterSetting
                 maxValue={maxValue}
                 setMaxValue={setMaxValue}
                 startValue={startValue}
                 setStartValue={setStartValue}
+
 
             />
         </div>
