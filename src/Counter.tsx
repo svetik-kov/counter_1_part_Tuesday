@@ -3,21 +3,20 @@ import s from "./Button.module.css";
 import {Button} from "./Button";
 
 type CounterType = {
+    counter: number
+    setCounter: (counter: number) => void
     maxValue: number
     startValue: number
     setStartValue: (startValue: number) => void
-    counter:number
-    setCounter:(counter:number)=>void
-
 }
 
-export const Counter = (props: CounterType) => {
+export const Counter:React.FC<CounterType>  = ({counter,...props}) => {
 
-   /* let [counter, setCounter] = useState(0)*/
+    /* let [counter, setCounter] = useState(0)*/
 
     const addButtonInc = () => {
-        if (props.counter < props.maxValue) {
-            props.setCounter(++props.counter)
+        if (counter < props.maxValue) {
+            props.setCounter(++counter)
         }
 
     }
@@ -26,14 +25,14 @@ export const Counter = (props: CounterType) => {
         props.setCounter(0)
     }
 
-    const InputClasses = props.counter === props.maxValue ? s.performance : s.stopPerformance
-    const Button1Classes = props.counter < props.maxValue ? s.active : ''
-    const Button2Classes = props.counter >= props.maxValue ? s.active : ''
-
+    const InputClasses = counter === props.maxValue ? s.performance : s.stopPerformance
+    const Button1Classes = counter < props.maxValue ? s.active : ''
+    const Button2Classes = counter >= props.maxValue ? s.active : ''
+    console.log(typeof counter, typeof props.maxValue)
     return (
         <div className={s.rectangle}>
 
-            <div><h1 className={InputClasses}>{props.counter}</h1></div>
+            <div><h1 className={InputClasses}>{counter}</h1></div>
             <div className={s.total}>
                 <Button className={Button1Classes} name={'inc'} onClick={addButtonInc}/>
                 <Button className={Button2Classes} name={'reset'} onClick={addButtonReset}/>
