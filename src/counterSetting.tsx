@@ -7,6 +7,7 @@ type CounterSettingType = {
     setMaxValue: (maxValue: number) => void
     startValue: number
     setStartValue: (startValue: number) => void
+    setCounter: () => void
 
 }
 
@@ -53,10 +54,11 @@ export const CounterSetting = (props: CounterSettingType) => {
     const onchangeStartHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.setStartValue(Number(e.currentTarget.value))
     }
-    const setHandler = () => {
-        props.setStartValue(props.startValue)
-    }
 
+    /*{
+    props.startValue < 0 || props.maxValue < 0 || props.maxValue === props.startValue || props.startValue > props.maxValue ? "Incorrect value" : "enter value and press 'set'"
+    }*/
+    const SetButtonClasses = props.startValue >= 0 ? s.active : ''
 
     return (
         <div className={s.rectangle}>
@@ -73,7 +75,9 @@ export const CounterSetting = (props: CounterSettingType) => {
             </div>
 
             <div className={s.total}>
-                <Button name={'set'} onClick={setHandler}/>
+                <Button className={SetButtonClasses} name={'set'} onClick={props.setCounter}/>
+
+
             </div>
         </div>
     );

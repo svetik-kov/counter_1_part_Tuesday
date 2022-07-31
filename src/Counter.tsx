@@ -8,6 +8,7 @@ type CounterType = {
     maxValue: number
     startValue: number
     setStartValue: (startValue: number) => void
+    message: string
 }
 
 export const Counter:React.FC<CounterType>  = ({counter,...props}) => {
@@ -27,12 +28,12 @@ export const Counter:React.FC<CounterType>  = ({counter,...props}) => {
 
     const InputClasses = counter === props.maxValue ? s.performance : s.stopPerformance
     const Button1Classes = counter < props.maxValue ? s.active : ''
-    const Button2Classes = counter >= props.maxValue ? s.active : ''
-    console.log(typeof counter, typeof props.maxValue)
+    const Button2Classes = counter <= props.maxValue ? s.active : ''
+
     return (
         <div className={s.rectangle}>
 
-            <div><h1 className={InputClasses}>{counter}</h1></div>
+            <div><h1 className={InputClasses}>{props.message ? props.message : counter}</h1></div>
             <div className={s.total}>
                 <Button className={Button1Classes} name={'inc'} onClick={addButtonInc}/>
                 <Button className={Button2Classes} name={'reset'} onClick={addButtonReset}/>
