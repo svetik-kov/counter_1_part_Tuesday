@@ -43,18 +43,18 @@ function App() {
             localStorage.setItem('startValue', JSON.stringify(startValue))
         }*/
 
-    const maxValueHandle = (max: number) => {
+    const maxValueHandle = (maxValue: number) => {
         localStorage.setItem('maxValue', JSON.stringify(maxValue))
-        setMaxValue(max)
-        if (max < 0 || max <= startValue) {
+        setMaxValue(maxValue)
+        if (maxValue < 0 || maxValue <= startValue) {
             setMessage('Incorrect values')
         } else setMessage('Enter values and press set')
     }
 
-    const startValueHandler = (start: number) => {
+    const startValueHandler = (startValue: number) => {
         localStorage.setItem('startValue', JSON.stringify(startValue))
-        setStartValue(start)
-        if (start < 0 || start <= maxValue) {
+        setStartValue(startValue)
+        if (startValue < 0 || startValue >= maxValue) {
             setMessage('Incorrect values')
         } else {
             setMessage('Enter values and press set')

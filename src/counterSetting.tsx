@@ -58,7 +58,7 @@ export const CounterSetting = (props: CounterSettingType) => {
     /*{
     props.startValue < 0 || props.maxValue < 0 || props.maxValue === props.startValue || props.startValue > props.maxValue ? "Incorrect value" : "enter value and press 'set'"
     }*/
-    const SetButtonClasses = props.startValue >= 0 ? s.active : ''
+    const SetButtonClasses = props.startValue >=0 && props.maxValue >= 0 && props.startValue!==props.maxValue &&props.startValue<props.maxValue ? s.active : ''
 
     return (
         <div className={s.rectangle}>
@@ -75,7 +75,7 @@ export const CounterSetting = (props: CounterSettingType) => {
             </div>
 
             <div className={s.total}>
-                <Button className={SetButtonClasses} name={'set'} onClick={props.setCounter}/>
+                <Button className={SetButtonClasses} name={'set'} onClick={props.setCounter} disabled={!(props.startValue >=0 && props.maxValue >= 0 && props.startValue!==props.maxValue &&props.startValue<props.maxValue) }/>
 
 
             </div>
